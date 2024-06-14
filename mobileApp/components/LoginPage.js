@@ -1,35 +1,31 @@
 import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Button } from 'react-native';
 
 const LoginPage = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Jobizz</Text>
-      <Text style={styles.subtitle}>Welcome Back 👋</Text>
-      <Text style={styles.description}>Let's log in. Apply to jobs!</Text>
-      
-      <TextInput
-        style={styles.input}
-        placeholder="Name"
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Email"
-      />
-      
-      <TouchableOpacity style={styles.loginButton}>
+      <View style={styles.header}>
+        <Text style={styles.title}>Jobizz</Text>
+        <Text style={styles.welcome}>Welcome Back 👋</Text>
+        <Text style={styles.subtitle}>Let's log in. Apply to jobs!</Text>
+      </View>
+      <View style={styles.form}>
+        <TextInput style={styles.input} placeholder="Name" />
+        <TextInput style={styles.input} placeholder="Email" keyboardType="email-address" />
+        <TouchableOpacity style={styles.loginButton}>
         <Text style={styles.loginButtonText}>Log in</Text>
       </TouchableOpacity>
 
-      <Text style={styles.orContinueWith}>Or continue with</Text>
-
+      </View>
+      <Text style={styles.or}>Or continue with</Text>
       <View style={styles.socialContainer}>
         <Image source={require('../assets/apple.png')} style={styles.socialIcon} />
         <Image source={require('../assets/google.png')} style={styles.socialIcon} />
         <Image source={require('../assets/facebook.png')} style={styles.socialIcon} />
       </View>
-
-      <Text style={styles.registerText}>Haven't an account? <Text style={styles.registerLink}>Register</Text></Text>
+      <TouchableOpacity onPress={() => { /* Handle registration navigation */ }}>
+        <Text style={styles.register}>Haven't created an account? Register</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -37,37 +33,60 @@ const LoginPage = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'space-between',
     backgroundColor: '#f5f5f5',
-    alignItems: 'center',
-    justifyContent: 'center',
     padding: 20,
+    backgroundColor: '#fff',
+  },
+  header: {
+    marginTop: 60,
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#1E3A8A',
+    color: '#000080',
+  },
+  welcome: {
+    fontSize: 22,
+    marginTop: 20,
+    fontWeight: 'bold',
   },
   subtitle: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    color: '#1F2937',
-    marginTop: 10,
-  },
-  description: {
     fontSize: 16,
-    color: '#6B7280',
-    marginTop: 5,
+    color: '#666',
+    marginVertical: 10,
+  },
+  form: {
+    marginTop: 20,
   },
   input: {
     width: '100%',
-    height: 50,
-    borderColor: '#E5E7EB',
+    padding: 20,
     borderWidth: 1,
+    borderColor: '#E5E7EB',
     borderRadius: 10,
-    paddingHorizontal: 15,
-    marginTop: 20,
-    backgroundColor: '#FFFFFF',
+    marginVertical: 10,
   },
+  or: {
+    marginVertical: 20,
+    textAlign: 'center',
+    color: '#666',
+  },
+  socialContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginHorizontal: 60,
+  },
+  socialIcon: {
+    width: 40,
+    height: 40
+  },
+  register: {
+    textAlign: 'center',
+    color: '#0066cc',
+    marginBottom: 30,
+  },
+
   loginButton: {
     width: '100%',
     height: 50,
@@ -82,30 +101,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
-  orContinueWith: {
-    color: '#6B7280',
-    fontSize: 14,
-    marginTop: 20,
-    marginBottom: 10,
-  },
-  socialContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '60%',
-  },
-  socialIcon: {
-    width: 40,
-    height: 40,
-  },
-  registerText: {
-    color: '#6B7280',
-    fontSize: 14,
-    marginTop: 20,
-  },
-  registerLink: {
-    color: '#3B82F6',
-    fontWeight: 'bold',
-  },
+
 });
 
 export default LoginPage;
