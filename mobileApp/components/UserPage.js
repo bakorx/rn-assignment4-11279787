@@ -69,7 +69,7 @@ const UserPage = () => {
       <View style={styles.header}>
         <View style={styles.headerTextContainer}>
           <Text style={styles.name}>Addai Emmanuel Kwame Bakor</Text>
-          <Text style={styles.email}>ekbaddi@st.ug.edu.gh</Text>
+          <Text style={styles.email}>ekbaddai@st.ug.edu.gh</Text>
         </View>
         <Image source={require('../assets/profilepic.jpeg')} style={styles.profilePic} />
       </View>
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     padding: 20,
-    marginTop: 55,
+    marginTop: 32,
   },
   header: {
     flexDirection: 'row',
