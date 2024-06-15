@@ -23,7 +23,7 @@ const LoginPage = () => {
         <Image source={require('../assets/google.png')} style={styles.socialIcon} />
         <Image source={require('../assets/facebook.png')} style={styles.socialIcon} />
       </View>
-      <TouchableOpacity onPress={() => { /* Handle registration navigation */ }}>
+      <TouchableOpacity onPress={() => {  }}>
         <Text style={styles.register}>Haven't created an account? Register</Text>
       </TouchableOpacity>
     </View>
@@ -39,20 +39,20 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   header: {
-    marginTop: 60,
+    marginTop: 100,
   },
   title: {
-    fontSize: 24,
+    fontSize: 30,
     fontWeight: 'bold',
-    color: '#000080',
+    color: '#356899',
   },
   welcome: {
-    fontSize: 22,
+    fontSize: 30,
     marginTop: 20,
     fontWeight: 'bold',
   },
   subtitle: {
-    fontSize: 16,
+    fontSize: 17,
     color: '#666',
     marginVertical: 10,
   },
@@ -66,6 +66,7 @@ const styles = StyleSheet.create({
     borderColor: '#E5E7EB',
     borderRadius: 10,
     marginVertical: 10,
+    height: 80,
   },
   or: {
     marginVertical: 20,
@@ -89,8 +90,8 @@ const styles = StyleSheet.create({
 
   loginButton: {
     width: '100%',
-    height: 50,
-    backgroundColor: '#3B82F6',
+    height: 70,
+    backgroundColor: '#356899',
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
