@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TextInput, StyleSheet, Image, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, StyleSheet, Image, FlatList, TouchableOpacity, ImageBackground } from 'react-native';
 
 const UserPage = () => {
   const featuredJobs = [
@@ -88,13 +88,13 @@ const UserPage = () => {
         showsHorizontalScrollIndicator={false}
         data={featuredJobs}
         renderItem={({ item }) => (
-          <View style={styles.featuredJobCard}>
+          <ImageBackground source={require('../assets/background.png')} style={styles.featuredJobCard}>
             <Image source={item.logo} style={styles.featuredJobLogo} />
             <Text style={styles.featuredJobTitle}>{item.title}</Text>
             <Text style={styles.featuredJobCompany}>{item.company}</Text>
             <Text style={styles.featuredJobSalary}>{item.salary}</Text>
             <Text style={styles.featuredJobLocation}>{item.location}</Text>
-          </View>
+          </ImageBackground>
         )}
         keyExtractor={(item) => item.id}
       />
@@ -193,6 +193,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
     width: 270,
     height: 210,
+    justifyContent: 'center',
   },
   featuredJobLogo: {
     width: 30,
