@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { View, Text, TextInput, StyleSheet, Image, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, StyleSheet, Image, FlatList } from 'react-native';
 
 const UserPage = () => {
   const featuredJobs = [
@@ -81,7 +81,10 @@ const UserPage = () => {
           <Text style={styles.email}>ekbaddi@st.ug.edu.gh</Text>
         </View>
       </View>
-      <TextInput style={styles.searchBar} placeholder="Search a job or position" />
+      <View style={styles.searchContainer}>
+        <Image source={require('../assets/searchicon.png')} style={styles.searchIcon} />
+        <TextInput style={styles.searchBar} placeholder="Search a job or position" />
+      </View>
       <Text style={styles.sectionTitle}>Featured Jobs</Text>
       <FlatList
         horizontal
@@ -146,13 +149,23 @@ const styles = StyleSheet.create({
   email: {
     color: '#666',
   },
-  searchBar: {
-    padding: 10,
+  searchContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
     borderWidth: 1,
     borderColor: '#E5E7EB',
     borderRadius: 10,
     marginBottom: 20,
     height: 60,
+    paddingHorizontal: 10,
+  },
+  searchIcon: {
+    width: 25,
+    height: 25,
+    marginRight: 10,
+  },
+  searchBar: {
+    flex: 1,
   },
   sectionTitle: {
     fontSize: 18,
