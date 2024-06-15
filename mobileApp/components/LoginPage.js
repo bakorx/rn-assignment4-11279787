@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Button } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
 
 const LoginPage = () => {
   return (
@@ -13,15 +13,20 @@ const LoginPage = () => {
         <TextInput style={styles.input} placeholder="Name" />
         <TextInput style={styles.input} placeholder="Email" keyboardType="email-address" />
         <TouchableOpacity style={styles.loginButton}>
-        <Text style={styles.loginButtonText}>Log in</Text>
-      </TouchableOpacity>
-
+          <Text style={styles.loginButtonText}>Log in</Text>
+        </TouchableOpacity>
       </View>
       <Text style={styles.or}>Or continue with</Text>
       <View style={styles.socialContainer}>
-        <Image source={require('../assets/apple.png')} style={styles.socialIcon} />
-        <Image source={require('../assets/google.png')} style={styles.socialIcon} />
-        <Image source={require('../assets/facebook.png')} style={styles.socialIcon} />
+        <View style={styles.iconContainer}>
+          <Image source={require('../assets/apple.png')} style={styles.socialIcon} />
+        </View>
+        <View style={styles.iconContainer}>
+          <Image source={require('../assets/google.png')} style={styles.socialIcon} />
+        </View>
+        <View style={styles.iconContainer}>
+          <Image source={require('../assets/facebook.png')} style={styles.socialIcon} />
+        </View>
       </View>
       <TouchableOpacity onPress={() => {  }}>
         <Text style={styles.register}>Haven't created an account? Register</Text>
@@ -78,16 +83,25 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginHorizontal: 60,
   },
+  iconContainer: {
+    backgroundColor: '#fff',
+    borderRadius: 25,
+    padding: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+    elevation: 2,
+  },
   socialIcon: {
-    width: 40,
-    height: 40
+    width: 35,
+    height: 35,
   },
   register: {
     textAlign: 'center',
     color: '#0066cc',
     marginBottom: 30,
   },
-
   loginButton: {
     width: '100%',
     height: 70,
@@ -102,7 +116,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
-
 });
 
 export default LoginPage;
