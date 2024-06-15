@@ -1,5 +1,5 @@
-import React, { useRef, useEffect } from 'react';
-import { View, Text, TextInput, StyleSheet, Image, FlatList } from 'react-native';
+import React from 'react';
+import { View, Text, TextInput, StyleSheet, Image, FlatList, TouchableOpacity } from 'react-native';
 
 const UserPage = () => {
   const featuredJobs = [
@@ -8,7 +8,7 @@ const UserPage = () => {
       company: 'Facebook',
       title: 'Software Engineer',
       location: 'Accra, Ghana',
-      salary: '$180,00',
+      salary: '$180,000',
       logo: require('../assets/facebook.png'),
     },
     {
@@ -64,30 +64,28 @@ const UserPage = () => {
     },
   ];
 
-  const flatListRef = useRef(null);
-
-  useEffect(() => {
-    setTimeout(() => {
-      flatListRef.current.scrollToIndex({ animated: true, index: 4 });
-    }, 1000);
-  }, []);
-
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Image source={require('../assets/profilepic.jpeg')} style={styles.profilePic} />
         <View style={styles.headerTextContainer}>
           <Text style={styles.name}>Addai Emmanuel Kwame Bakor</Text>
           <Text style={styles.email}>ekbaddi@st.ug.edu.gh</Text>
         </View>
+        <Image source={require('../assets/profilepic.jpeg')} style={styles.profilePic} />
       </View>
       <View style={styles.searchContainer}>
         <Image source={require('../assets/searchicon.png')} style={styles.searchIcon} />
         <TextInput style={styles.searchBar} placeholder="Search a job or position" />
       </View>
-      <Text style={styles.sectionTitle}>Featured Jobs</Text>
+      <View style={styles.sectionHeader}>
+        <Text style={styles.sectionTitle}>Featured Jobs</Text>
+        <TouchableOpacity>
+          <Text style={styles.seeAll}>See all</Text>
+        </TouchableOpacity>
+      </View>
       <FlatList
         horizontal
+        showsHorizontalScrollIndicator={false}
         data={featuredJobs}
         renderItem={({ item }) => (
           <View style={styles.featuredJobCard}>
@@ -100,9 +98,14 @@ const UserPage = () => {
         )}
         keyExtractor={(item) => item.id}
       />
-      <Text style={styles.sectionTitle}>Popular Jobs</Text>
+      <View style={styles.sectionHeader}>
+        <Text style={styles.sectionTitle}>Popular Jobs</Text>
+        <TouchableOpacity>
+          <Text style={styles.seeAll}>See all</Text>
+        </TouchableOpacity>
+      </View>
       <FlatList
-        ref={flatListRef}
+        showsVerticalScrollIndicator={false}
         data={popularJobs}
         renderItem={({ item }) => (
           <View style={styles.popularJobCard}>
@@ -131,16 +134,18 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
     marginBottom: 20,
   },
   profilePic: {
     width: 50,
     height: 50,
     borderRadius: 25,
-    marginRight: 10,
+    marginLeft: 10,
   },
   headerTextContainer: {
     flex: 1,
+    marginRight: 10,
   },
   name: {
     fontSize: 18,
@@ -160,17 +165,26 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   searchIcon: {
-    width: 25,
-    height: 25,
+    width: 20,
+    height: 20,
     marginRight: 10,
   },
   searchBar: {
     flex: 1,
   },
+  sectionHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 10,
+  },
   sectionTitle: {
     fontSize: 18,
     fontWeight: 'bold',
-    marginBottom: 10,
+  },
+  seeAll: {
+    fontSize: 14,
+    color: '#95969D',
   },
   featuredJobCard: {
     backgroundColor: '#4f6d7a',
